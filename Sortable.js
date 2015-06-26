@@ -176,7 +176,8 @@
 			dropBubble: false,
 			dragoverBubble: false,
 			dataIdAttr: 'data-id',
-			delay: 0
+			delay: 0,
+			forceFallback: false
 		};
 
 
@@ -355,7 +356,7 @@
 
 				this._onDragStart(tapEvt, 'touch');
 			}
-			else if (!supportDraggable) {
+			else if (!supportDraggable || this.options.forceFallback) {
 				this._onDragStart(tapEvt, true);
 			}
 			else {
