@@ -1068,9 +1068,11 @@
 
 	/** @returns {HTMLElement|false} */
 	function _ghostInBottom(el, evt) {
-		var lastEl = el.lastElementChild,
-			rect = lastEl.getBoundingClientRect();
-
+		var lastEl = el.lastElementChild;
+		if (lastEl===ghostEl) {
+			lastEl = lastEl.previousElementSibling || ghostEl;
+		}
+		var rect = lastEl.getBoundingClientRect();
 		return (evt.clientY - (rect.top + rect.height) > 5) && lastEl; // min delta
 	}
 
